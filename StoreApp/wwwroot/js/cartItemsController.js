@@ -11,7 +11,7 @@
 
         vm.cartItems = [];
 
-        $http.get("api/cartitems")
+        $http.get("/api/cartitems")
             .then(function (response) {
                 angular.copy(response.data, vm.cartItems)
             }, function () {

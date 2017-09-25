@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
     angular.module("app-cart", [])
-        .config(function ($routeProvider) {
+        .config(function () {
 
         });
 
