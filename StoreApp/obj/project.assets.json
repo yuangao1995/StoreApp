@@ -10862,11 +10862,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\YuanG\\Source\\Repos\\StoreApp\\StoreApp\\StoreApp.csproj",
+      "projectUniqueName": "C:\\Users\\YuanG\\Repos\\StoreApp\\StoreApp\\StoreApp.csproj",
       "projectName": "StoreApp",
-      "projectPath": "C:\\Users\\YuanG\\Source\\Repos\\StoreApp\\StoreApp\\StoreApp.csproj",
+      "projectPath": "C:\\Users\\YuanG\\Repos\\StoreApp\\StoreApp\\StoreApp.csproj",
       "packagesPath": "C:\\Users\\YuanG\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\YuanG\\Source\\Repos\\StoreApp\\StoreApp\\obj\\",
+      "outputPath": "C:\\Users\\YuanG\\Repos\\StoreApp\\StoreApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\YuanG\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -26,6 +26,19 @@
 
             });
 
+        vm.addToCart = function () {
+            var cartitem = {};
+            cartitem.productid = vm.product.prodId;
+            cartitem.CPrice = vm.product.price;
+            cartitem.name = vm.product.name;
+            $http.post("api/cartitems", cartitem)
+                .then(function (response) {
+                    vm.inCart.push(response.data);
+                }
+                , function () {
+
+                });
+        };
         //$http({
         //    url: '/api/products',
         //    method: 'GET',

@@ -23,5 +23,16 @@ namespace StoreApp.Models
         {
             return _context.Products.Where(x => x.ProdId == Id).Single();
         }
+
+        public void AddCartItem(CartItems cartItem)
+        {
+            _context.Add(cartItem);
+            _context.SaveChanges();
+        }
+
+        public IEnumerable<CartItems> GetAllCartItems()
+        {
+            return _context.CartItems.ToList();
+        }
     }
 }

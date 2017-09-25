@@ -50,6 +50,7 @@ namespace StoreApp
             Mapper.Initialize(config =>
             {
                 config.CreateMap<ProductViewModel, Products>().ReverseMap();
+                config.CreateMap<CartItemsViewModel, CartItems>().ReverseMap();
             });
             if (env.IsDevelopment())
             {

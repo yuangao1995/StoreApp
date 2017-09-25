@@ -3,19 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using StoreApp.Models;
+using AutoMapper;
+using StoreApp.ViewModels;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace StoreApp.Controllers.Api
 {
-    [Route("api/shopping")]
+    [Route("api/cartitems")]
     public class CartItemsController : Controller
     {
+        private IStoreRepository _repository;
+
+        public CartItemsController(IStoreRepository repository)
+        {
+            _repository = repository;
+        }
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var result = _repository.GetAllCartItems();
+            return Ok(Mapper.Map<IEnumerable<CartItemsViewModel>>(result));
         }
 
         // GET api/values/5
@@ -27,8 +37,10 @@ namespace StoreApp.Controllers.Api
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]CartItemsViewModel vm)
         {
+            var newCartItem = Mapper.Map<CartItems>(vm);
+            _repository.AddCartItem(newCartItem);
         }
 
         // PUT api/values/5

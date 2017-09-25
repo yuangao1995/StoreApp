@@ -9,5 +9,7 @@ namespace StoreApp.Models
     {
         IEnumerable<Products> GetAllProducts();
         Products GetProductById(int Id);
+        IEnumerable<CartItems> GetAllCartItems();
+        void AddCartItem(CartItems cartItem);
     }
 }

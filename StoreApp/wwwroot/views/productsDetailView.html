@@ -1,11 +1,11 @@
 ﻿<div>
-    <h1>HELLO</h1>
-    <!--<img ng-src="images/{{vm.product[0]}}" />-->
-    <!--<p>{{vm.product[1]}}</p>-->
-    <!--<p>{{vm.product[2]}}</p>-->
-    <!--<p>{{vm.product[3]}}</p>-->
-    <p>{{vm.product.prodId}}</p>
-    <a class="btn btn-success">Add To Cart</a>
+    <img ng-src="images/{{vm.product.imageURL}}" style="width:500px;height:500px;"/>
+    <p>Product: {{vm.product.name}}</p>
+    <p>Description: {{vm.product.description}}</p>
+    <p>Price: ${{vm.product.price}}</p>
+    <form ng-submit="vm.addToCart()">
+        <button type ="submit" class="btn btn-success">Add To Cart</button>
+    </form>
     <a ng-href="#/" class="btn btn-default">Back To Products</a>
 </div>
 
