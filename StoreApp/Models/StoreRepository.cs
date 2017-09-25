@@ -34,5 +34,18 @@ namespace StoreApp.Models
         {
             return _context.CartItems.ToList();
         }
+        public CartItems GetCartItemById(int Id)
+        {
+            return _context.CartItems.Where(x => x.CartItemId == Id).SingleOrDefault();
+        }
+        public void RemoveCartItem(CartItems cartItem)
+        {
+            _context.Remove(cartItem);
+            _context.SaveChanges();
+        }
+        public async Task<bool> SaveChangesAsync()
+        {
+            return (await _context.SaveChangesAsync()) > 0;
+        }
     }
 }

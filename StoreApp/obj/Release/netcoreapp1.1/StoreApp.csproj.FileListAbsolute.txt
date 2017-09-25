@@ -1,0 +1,10 @@
+C:\Users\YuanG\Repos\StoreApp\StoreApp\bin\Release\netcoreapp1.1\StoreApp.deps.json
+C:\Users\YuanG\Repos\StoreApp\StoreApp\bin\Release\netcoreapp1.1\StoreApp.runtimeconfig.json
+C:\Users\YuanG\Repos\StoreApp\StoreApp\bin\Release\netcoreapp1.1\StoreApp.runtimeconfig.dev.json
+C:\Users\YuanG\Repos\StoreApp\StoreApp\bin\Release\netcoreapp1.1\StoreApp.dll
+C:\Users\YuanG\Repos\StoreApp\StoreApp\bin\Release\netcoreapp1.1\StoreApp.pdb
+C:\Users\YuanG\Repos\StoreApp\StoreApp\obj\Release\netcoreapp1.1\StoreApp.csprojResolveAssemblyReference.cache
+C:\Users\YuanG\Repos\StoreApp\StoreApp\obj\Release\netcoreapp1.1\StoreApp.csproj.CoreCompileInputs.cache
+C:\Users\YuanG\Repos\StoreApp\StoreApp\obj\Release\netcoreapp1.1\StoreApp.AssemblyInfo.cs
+C:\Users\YuanG\Repos\StoreApp\StoreApp\obj\Release\netcoreapp1.1\StoreApp.dll
+C:\Users\YuanG\Repos\StoreApp\StoreApp\obj\Release\netcoreapp1.1\StoreApp.pdb

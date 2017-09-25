@@ -24,35 +24,51 @@ namespace StoreApp.Controllers.Api
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _repository.GetAllCartItems();
-            return Ok(Mapper.Map<IEnumerable<CartItemsViewModel>>(result));
-        }
+            try
+            {
+                var result = _repository.GetAllCartItems();
+                return Ok(Mapper.Map<IEnumerable<CartItemsViewModel>>(result));
+            }
+            catch (Exception ex)
+            {
+                //still need to add logger
+                return BadRequest("Failed to get items");
+            }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]CartItemsViewModel vm)
+        public async Task<IActionResult> Post([FromBody]CartItemsViewModel vm)
         {
-            var newCartItem = Mapper.Map<CartItems>(vm);
-            _repository.AddCartItem(newCartItem);
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
+            if (ModelState.IsValid)
+            {
+                var newCartItem = Mapper.Map<CartItems>(vm);
+                _repository.AddCartItem(newCartItem);
+                if (await _repository.SaveChangesAsync())
+                {
+                    return Created($"/api/cartitems/{vm.Name}",
+                    Mapper.Map<CartItemsViewModel>(newCartItem));
+                }
+            }
+            return BadRequest("Failed to add item to cart");
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete([FromRoute] int id)
         {
+            if (ModelState.IsValid)
+            {
+                var todelete = _repository.GetCartItemById(id);
+                if (todelete == null)
+                {
+                    return NotFound();
+                }
+                _repository.RemoveCartItem(todelete);
+                return Ok(todelete);
+            }
+            return BadRequest("Failed to delete item from cart");
         }
     }
 }

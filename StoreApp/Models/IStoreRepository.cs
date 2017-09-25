@@ -10,6 +10,9 @@ namespace StoreApp.Models
         IEnumerable<Products> GetAllProducts();
         Products GetProductById(int Id);
         IEnumerable<CartItems> GetAllCartItems();
+        CartItems GetCartItemById(int Id);
         void AddCartItem(CartItems cartItem);
+        void RemoveCartItem(CartItems cartItem);
+        Task<bool> SaveChangesAsync();
     }
 }

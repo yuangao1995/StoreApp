@@ -25,8 +25,8 @@ namespace StoreApp.Controllers
         public IActionResult Cart()
         {
             ViewData["Message"] = "Items Added to Your Cart:";
-
-            return View();
+            var data = _repository.GetAllCartItems();
+            return View(data);
         }
 
         public IActionResult Error()

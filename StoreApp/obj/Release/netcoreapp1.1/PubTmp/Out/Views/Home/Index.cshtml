@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Store";
+    ViewBag.Title = "Store Page";
+}
+@section Scripts {
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/lib/angular-route/angular-route.min.js"></script>
+    <script src="~/js/app-products.js"></script>
+    <script src="~/js/productsController.js"></script>
+    <script src="~/js/productsDetailController.js"></script>
+}
+<div>
+    <h2>@ViewData["Title"]</h2>
+    <h3>@ViewData["Message"]</h3>
+</div>
+
+<div class="row" ng-app="app-products">
+    <div data-ng-view></div>
+</div>
