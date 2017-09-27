@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,14 +9,39 @@ namespace StoreApp.Models
     public class StoreContextSeedData
     {
         private StoreContext _context;
+        private UserManager<StoreUser> _userManager;
 
-        public StoreContextSeedData(StoreContext context)
+        public StoreContextSeedData(StoreContext context, UserManager<StoreUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task EnsureSeedData()
         {
+            if (await _userManager.FindByEmailAsync("example2@StoreApp.com") == null)
+            {
+                var user = new StoreUser()
+                {
+                    UserName = "example2@StoreApp.com",
+                    Email = "example2@StoreApp.com"
+                };
+
+               var r = await _userManager.CreateAsync(user, "Password_123");
+            }
+
+            if (await _userManager.FindByEmailAsync("example3@StoreApp.com") == null)
+            {
+                var user = new StoreUser()
+                {
+                    UserName = "example3@StoreApp.com",
+                    Email = "example3@StoreApp.com"
+                };
+
+                var r = await _userManager.CreateAsync(user, "Password_123");
+            }
+
+
             if (!_context.Products.Any())
             {
                 var prod1 = new Products()

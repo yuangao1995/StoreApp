@@ -11,6 +11,8 @@ using StoreApp.Models;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using StoreApp.ViewModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace StoreApp
 {
@@ -31,6 +33,17 @@ namespace StoreApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<StoreUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 6;
+                config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
+                config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
+                {
+                    
+                };
+            }).AddEntityFrameworkStores<StoreContext>();
+
             // Add framework services.
             services.AddMvc();
 
@@ -79,6 +92,9 @@ namespace StoreApp
             //        name: "default",
             //        template: "{controller}/{action=Index}/{id?}");
             //});
+
+            app.UseIdentity();
+
             app.UseMvc(config =>
             {
                 config.MapRoute(

@@ -14,5 +14,6 @@ namespace StoreApp.Models
         void AddCartItem(CartItems cartItem);
         void RemoveCartItem(CartItems cartItem);
         Task<bool> SaveChangesAsync();
+        IEnumerable<CartItems> GetCartItemsByUser(string name);
     }
 }

@@ -8,9 +8,10 @@ using StoreApp.Models;
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20170926202252_addingIdentities")]
+    partial class addingIdentities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -123,6 +124,18 @@ namespace StoreApp.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("StoreApp.Models.Cart", b =>
+                {
+                    b.Property<int>("CartId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("CartId");
+
+                    b.ToTable("Cart");
+                });
+
             modelBuilder.Entity("StoreApp.Models.CartItems", b =>
                 {
                     b.Property<int>("CartItemId")
@@ -130,13 +143,13 @@ namespace StoreApp.Migrations
 
                     b.Property<decimal>("CPrice");
 
+                    b.Property<int>("CartId");
+
                     b.Property<string>("Name");
 
                     b.Property<int>("ProdId");
 
                     b.Property<int>("Qty");
-
-                    b.Property<string>("UserName");
 
                     b.HasKey("CartItemId");
 

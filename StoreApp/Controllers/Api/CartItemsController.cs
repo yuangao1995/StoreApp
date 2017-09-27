@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using StoreApp.Models;
 using AutoMapper;
 using StoreApp.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,7 +27,8 @@ namespace StoreApp.Controllers.Api
         {
             try
             {
-                var result = _repository.GetAllCartItems();
+                //var result = _repository.GetAllCartItems();
+                var result = _repository.GetCartItemsByUser(this.User.Identity.Name);
                 return Ok(Mapper.Map<IEnumerable<CartItemsViewModel>>(result));
             }
             catch (Exception ex)
@@ -39,11 +41,15 @@ namespace StoreApp.Controllers.Api
 
         // POST api/values
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Post([FromBody]CartItemsViewModel vm)
         {
             if (ModelState.IsValid)
             {
                 var newCartItem = Mapper.Map<CartItems>(vm);
+
+                newCartItem.UserName = User.Identity.Name;
+
                 _repository.AddCartItem(newCartItem);
                 if (await _repository.SaveChangesAsync())
                 {

@@ -27,7 +27,7 @@
                     vm.cartitem = {};
                 }
                 , function () {
-
+                    vm.cartiem = {};
                 });
         };
 

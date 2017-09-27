@@ -10,7 +10,7 @@ namespace StoreApp.Models
     {
         [Key]
         public int CartItemId { get; set; }
-        public int CartId { get; set; }
+        public string UserName { get; set; }
         public int ProdId { get; set; }
         public int Qty { get; set; }
         public decimal CPrice { get; set; }
