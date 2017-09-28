@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace StoreApp.Controllers.Api
 {
+    [Authorize]
     [Route("api/cartitems")]
     public class CartItemsController : Controller
     {
@@ -41,11 +42,11 @@ namespace StoreApp.Controllers.Api
 
         // POST api/values
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> Post([FromBody]CartItemsViewModel vm)
         {
             if (ModelState.IsValid)
             {
+                
                 var newCartItem = Mapper.Map<CartItems>(vm);
 
                 newCartItem.UserName = User.Identity.Name;

@@ -4,7 +4,7 @@
     <p>Description: {{vm.product.description}}</p>
     <p>Price: ${{vm.product.price}}</p>
     <form ng-submit="vm.addToCart()">
-        <button ng-model = vm.newCartItem ng-click="vm.alert()" id="addedToCart" type ="submit" class="btn btn-success">Add To Cart</button>
+        <button ng-model = vm.newCartItem id="addedToCart" type ="submit" class="btn btn-success">Add To Cart</button>
     </form>
     <a ng-href="#/" class="btn btn-default">Back To Products</a>
 </div>

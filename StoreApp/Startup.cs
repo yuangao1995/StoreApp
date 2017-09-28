@@ -37,11 +37,28 @@ namespace StoreApp
             {
                 config.User.RequireUniqueEmail = true;
                 config.Password.RequiredLength = 6;
-                config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
+                config.Password.RequireLowercase = false;
+                config.Password.RequireUppercase = false;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Password.RequireDigit = false;
+             /*   config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
                 config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
                 {
-                    
-                };
+                    OnRedirectToLogin = async ctx =>
+                    {
+                        if (ctx.Request.Path.StartsWithSegments("/api") && 
+                            ctx.Response.StatusCode == 2)
+                        {
+                            ctx.Response.StatusCode = 401;
+                        }
+                        else
+                        {
+                            ctx.Response.Redirect(ctx.RedirectUri);
+                        }
+                        await Task.Yield();
+                    }
+                };*/
+           
             }).AddEntityFrameworkStores<StoreContext>();
 
             // Add framework services.
@@ -79,11 +96,12 @@ namespace StoreApp
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions()
             {
+
                 AccessDeniedPath = "/Account/Forbidden/",
                 AuthenticationScheme = "MyCookieAuthenticationScheme",
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true,
-                LoginPath = "/Account/Unauthorized/"
+                LoginPath = new Microsoft.AspNetCore.Http.PathString("/Auth/Login")
             });
 
             //app.UseMvc(routes =>

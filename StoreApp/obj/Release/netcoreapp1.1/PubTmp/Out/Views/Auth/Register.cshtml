@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    ViewBag.Title = "Account Registration";
+}
+@section Scripts{ 
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+@model StoreApp.ViewModels.RegisterUserViewModel
+
+<div class="row" >
+    <h2>@ViewData["Title"]</h2>
+    <h3>@ViewData["Message"]</h3>
+
+    <!--TODO: form to submit registration information-->
+    <div>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-muted"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" class="form-control"></>
+                <span asp-validation-for="Password" class="text-muted"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword">Enter password again</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control"></>
+                <span asp-validation-for="ConfirmPassword" class="text-muted"></span>
+            </div>
+            <div class="form-group">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-default">Cancel</a>
+                <input type="submit" value="Register" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+    <a asp-controller="Auth" asp-action="Login">Already Registered? Click me to login</a>
+</div>

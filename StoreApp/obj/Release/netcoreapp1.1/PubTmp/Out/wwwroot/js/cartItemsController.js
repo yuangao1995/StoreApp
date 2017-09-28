@@ -21,7 +21,7 @@
             $http.delete("/api/cartitems/"+ Id)
                 .then(function (response) {
                     if (response.data)
-                        alert("Data deleted");
+                        alert("Item removed");
                         location.reload();
                 }
                 , function () {

@@ -23,11 +23,12 @@
             vm.cartitem.name = vm.product.name;
             $http.post("api/cartitems", vm.cartitem)
                 .then(function (response) {
-                    vm.inCart.push(response.data);
+                    alert("Product Added to Cart!");
+                    vm.inCart.push(response.data);  
                     vm.cartitem = {};
                 }
                 , function () {
-                    vm.cartiem = {};
+                    vm.cartitem = {};
                 });
         };
 
